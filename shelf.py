@@ -71,4 +71,9 @@ class Shelf:
         return x, self.coordinates[1]
 
     def passage_y_coordinates_calculation(self) -> tuple[int, int]:
-        pass
+        if self.aisle < 5:
+            upper = 0 if self.rack < 16 else 16
+            lower = 16 if self.rack < 16 else 28
+        else:
+            upper, lower = 7, 28
+        return upper, lower
