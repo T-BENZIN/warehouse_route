@@ -53,6 +53,7 @@ class Shelf:
         return self.__lower_passage_y_coordinate
 
     def coordinates_calculation(self) -> tuple[int, int]:
+        """Расчёт координат стеллажа"""
         if is_odd(self.aisle):
             x = (self.aisle // 2) * 3 + 2 if self.aisle > 1 else 2
         else:
@@ -64,6 +65,7 @@ class Shelf:
         return x, y
 
     def pickup_coordinates_calculation(self) -> tuple[int, int]:
+        """Расчёт координат прилегающего прохода"""
         if is_odd(self.aisle):
             x = self.coordinates[0] - 1
         else:
@@ -71,9 +73,11 @@ class Shelf:
         return x, self.coordinates[1]
 
     def passage_y_coordinates_calculation(self) -> tuple[int, int]:
+        """Y-координаты проходов на параллельные ряды"""
         if self.aisle < 5:
-            upper = 0 if self.rack < 16 else 16
-            lower = 16 if self.rack < 16 else 28
+            # upper = 0 if self.rack < 16 else 16
+            # lower = 16 if self.rack < 16 else 28
+            upper, lower = 0, 28
         else:
             upper, lower = 7, 28
         return upper, lower
