@@ -20,6 +20,9 @@ class Shelf:
         self.__pickup_coordinates = self.pickup_coordinates_calculation()
         self.__upper_passage_y_coordinate, self.__lower_passage_y_coordinate = self.passage_y_coordinates_calculation()
 
+    def __repr__(self) -> str:
+        return self.address
+
     @property
     def address(self) -> str:
         return self.__address
@@ -86,10 +89,10 @@ class Shelf:
 if __name__ == '__main__':
     """Проверка работы класса Shelf на примере данных из input.txt"""
     with open('input.txt', 'r') as file:
-        orders = file.read()
-    orders_list = orders.split(sep='\n')
-    for order in orders_list:
-        shelf = Shelf(order)
+        locations = file.read()
+    locations_list = locations.split(sep='\n')
+    for location in locations_list:
+        shelf = Shelf(location)
         print(f'''
 Полка {shelf.address} (ряд {shelf.aisle}, стеллаж {shelf.rack}, уровень {shelf.shelf})
 расположена по координатам {shelf.coordinates} и место сборки на {shelf.pickup_coordinates}
