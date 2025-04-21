@@ -14,5 +14,4 @@ def random_cell() -> str:
 if __name__ == '__main__':
     order_list = [random_cell() for _ in range(randint(10, 15))]
     with open('input.txt', 'w') as file:
-        for item in order_list:
-            file.writelines(f'{item}\n')
+        file.write('\n'.join(order_list))
