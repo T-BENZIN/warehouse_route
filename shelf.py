@@ -11,7 +11,7 @@ class Shelf:
         :param address: Адрес полки в текстовом формате. Например: 2/D/23
         :type address: str
         """
-        self.__address = address
+        self.__address = address.rsplit(sep='\n', maxsplit=1)[0]
         address_list = address.split(sep='/', maxsplit=2)
         self.__aisle = int(address_list[0])
         self.__shelf = address_list[1]
@@ -77,3 +77,16 @@ class Shelf:
         else:
             upper, lower = 7, 28
         return upper, lower
+
+
+if __name__ == '__main__':
+    """Проверка работы класса Shelf на примере данных из input.txt"""
+    order_list = []
+    with open('input.txt', 'r') as file:
+        for line in file.readlines():
+            shelf = Shelf(line)
+            order_list.append(shelf)
+            print(f'''
+Полка {shelf.address} (ряд {shelf.aisle}, стеллаж {shelf.rack}, уровень {shelf.shelf})
+расположена по координатам {shelf.coordinates} и место сборки на {shelf.pickup_coordinates}
+ближайшие проходы на параллельные уровни находятся а Y: {shelf.upper_passage_y_coordinate} и {shelf.lower_passage_y_coordinate}''')
