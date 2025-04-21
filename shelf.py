@@ -1,3 +1,7 @@
+def is_odd(number: int) -> bool:
+    return bool(number % 2)
+
+
 class Shelf:
     """Класс определяющий полку и рассчитывающий её свойства"""
     def __init__(self, address: str):
@@ -49,7 +53,15 @@ class Shelf:
         return self.__lower_passage_y_coordinate
 
     def coordinates_calculation(self) -> tuple[int, int]:
-        pass
+        if is_odd(self.aisle):
+            x = (self.aisle - 1) * 3 + 2
+        else:
+            x = (self.aisle - 1) * 3 if self.aisle > 0 else 0
+        if self.aisle < 5:
+            y = self.rack if self.rack < 16 else self.rack + 1
+        else:
+            y = self.rack + 7
+        return x, y
 
     def pickup_coordinates_calculation(self) -> tuple[int, int]:
         pass
