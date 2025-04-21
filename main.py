@@ -3,6 +3,10 @@ from shelf import Shelf
 
 
 def find_next_location(locations: list[Shelf], start_loc: Shelf = None):
+    """
+    Поиск ближайшей точки сбора от текущей точки.
+    Если передано значение None в качестве текущей точки, то берутся условные стартовые координаты.
+    """
     if start_loc is not None:
         list_dist = [
             distance_picking(
