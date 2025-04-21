@@ -54,9 +54,9 @@ class Shelf:
 
     def coordinates_calculation(self) -> tuple[int, int]:
         if is_odd(self.aisle):
-            x = (self.aisle - 1) * 3 + 2
+            x = (self.aisle // 2) * 3 + 2 if self.aisle > 1 else 2
         else:
-            x = (self.aisle - 1) * 3 if self.aisle > 0 else 0
+            x = (self.aisle // 2) * 3 if self.aisle > 0 else 0
         if self.aisle < 5:
             y = self.rack if self.rack < 16 else self.rack + 1
         else:
@@ -89,4 +89,4 @@ if __name__ == '__main__':
             print(f'''
 Полка {shelf.address} (ряд {shelf.aisle}, стеллаж {shelf.rack}, уровень {shelf.shelf})
 расположена по координатам {shelf.coordinates} и место сборки на {shelf.pickup_coordinates}
-ближайшие проходы на параллельные уровни находятся а Y: {shelf.upper_passage_y_coordinate} и {shelf.lower_passage_y_coordinate}''')
+ближайшие проходы на параллельные уровни находятся на Y: {shelf.upper_passage_y_coordinate} и {shelf.lower_passage_y_coordinate}''')
