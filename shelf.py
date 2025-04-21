@@ -64,7 +64,11 @@ class Shelf:
         return x, y
 
     def pickup_coordinates_calculation(self) -> tuple[int, int]:
-        pass
+        if is_odd(self.aisle):
+            x = self.coordinates[0] - 1
+        else:
+            x = self.coordinates[0] + 1
+        return x, self.coordinates[1]
 
     def passage_y_coordinates_calculation(self) -> tuple[int, int]:
         pass
