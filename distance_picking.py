@@ -14,7 +14,7 @@ def distance_picking(loc1: tuple[int, int], loc2: tuple[int, int], y_low: int, y
         distance_y1 = (y_high - y1) + (y_high - y2)
         distance_y2 = (y1 - y_low) + (y2 - y_low)
     distance_y = min(distance_y1, distance_y2)
-    distance = distance_x + distance_y
+    distance = distance_x * 30 + distance_y
     return distance
 
 
